@@ -1,0 +1,75 @@
+<template>
+  <template if:true={propertiesFound}>
+    <lightning-layout multiple-rows="true">
+      <template for:each={properties} for:item="property">
+        <lightning-layout-item
+          key={property.id}
+          size="6"
+          padding="around-small"
+        >
+          <lightning-layout key={property.id} multiple-rows>
+            <div
+              key={property.id}
+              class="slds-box"
+              style="width: 100%; background-color: wheat"
+            >
+              <lightnng-layout>
+                <lightning-layout-item size="4" padding="around-small">
+                  <lightning-formatted-rich-text
+                    value={prop.Property_Main_Image__c}
+                  ></lightning-formatted-rich-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="8" padding="around-small">
+                  <lightning-card title={prop.Furnished_Type__c}>
+                    <lightning-layout-item
+                      style="color: tomato"
+                      padding="around-small"
+                    >
+                      INR: {prop.Rent__c}
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                      {prop.Number_of_Bedrooms__c} BHK house for rent
+                      {prop.Covered_Area_sqrt__c} sqft
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                      {prop.Area__c}
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small">
+                      {prop.Number_of_Bedrooms__c} room
+                      {prop.Number_of_bathrooms__c} bathrooms
+                      {prop.Furnished_Type__c}
+                    </lightning-layout-item>
+                  </lightning-card>
+                  <div class="slds-p-top_small">
+                    <lightning-button-group>
+                      <lightning-button
+                        label="Owner Details"
+                        variant="success"
+                        class="slds-m-around_x-small"
+                      ></lightning-button>
+                      <lightning-button
+                        label="Enquiry"
+                        variant="success"
+                        class="slds-m-around_x-small"
+                      ></lightning-button>
+                      <lightning-button
+                        label="Property Details"
+                        variant="success"
+                        class="slds-m-around_x-small"
+                      ></lightning-button>
+                    </lightning-button-group>
+                  </div>
+                </lightning-layout-item>
+              </lightnng-layout>
+            </div>
+          </lightning-layout>
+        </lightning-layout-item>
+      </template>
+    </lightning-layout>
+  </template>
+  <template if:false={propertiesFound}>
+    <div class="slds-align_absolute-center" style="color: chartreuse">
+      No properties defined. Please stay tuned for listing of the properties.
+    </div>
+  </template>
+</template>
